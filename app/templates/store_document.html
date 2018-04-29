@@ -1,0 +1,46 @@
+{% extends "index.html" -%}
+{% block store_document %}
+<div style = font-size:20px; font-weight:bold; margin-left:150px;>
+	<form action="/messages" method="POST">
+			<fieldset>
+			
+			<legend>Add new document</legend>
+			{{ store_form.hidden_tag() }}
+			
+			<div style = font-size:20px; font-weight:bold; margin-left:150px;>
+				{{ store_form.id.label }}
+				<br>
+			   {{ store_form.id }}
+				{% for message in store_form.id.errors %}
+					<div>{{ message }}</div>
+				{% endfor %}
+			   <br>
+		   
+			   
+				{{ store_form.text.label }}
+				<br>
+			   {{ store_form.text }}
+				{% for message in store_form.text.errors %}
+					<div>{{ message }}</div>
+				{% endfor %}
+			   <br>
+			   
+			   	{{ store_form.ttl.label }}
+				<br>
+			   {{ store_form.ttl }}
+				{% for message in store_form.ttl.errors %}
+					<div>{{ message }}</div>
+				{% endfor %}
+			   <br>
+			   
+			   {{store_form.submit}}
+				{% if store_success %}
+					<p>Submission successful</p>
+				{% endif %}
+			</div>
+			
+		 </fieldset>
+	  </form>
+</div>
+
+{% endblock %}
